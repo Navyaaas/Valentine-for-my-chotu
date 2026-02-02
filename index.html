@@ -1,62 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Will you be my Valentine</title>
-  <style>
-    body {
-      background: linear-gradient(135deg, #ffe6f0, #fff3c4);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      margin: 0;
-    }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    h1 {
-      color: #ff4d88;
-    }
-    button {
-      font-size: 18px;
-      padding: 10px 20px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      margin: 10px;
-    }
-    #yes {
-      background: #ff4d88;
-      color: white;
-    }
-    #no {
-      background: #ddd;
-      position: absolute;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffd1e8, #fff0f6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .card {
+    background: white;
+    padding: 35px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    max-width: 360px;
+  }
+
+  h1 {
+    color: #ff3f86;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #555;
+    min-height: 40px;
+  }
+
+  button {
+    border: none;
+    border-radius: 30px;
+    padding: 12px 22px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 8px;
+  }
+
+  #yes {
+    background: #ff3f86;
+    color: white;
+  }
+
+  #no {
+    background: #eee;
+    color: #444;
+  }
+</style>
 </head>
+
 <body>
 
 <div class="card">
-  <h1>Will you be my Valentine 💖</h1>
-  <button id="yes" onclick="yesClick()">Yes 🥺❤️</button>
-  <button id="no" onmouseover="moveNo()">No 😏</button>
+  <h1>Will you be my Valentine 💕</h1>
+  <p id="msg">Soch le ache se 😌</p>
+
+  <button id="yes" onclick="yesClicked()">Yes 💖</button>
+  <button id="no" onclick="noClicked()">No 🙄</button>
 </div>
 
 <script>
-  function moveNo() {
-    const no = document.getElementById("no");
-    no.style.left = Math.random() * 80 + "vw";
-    no.style.top = Math.random() * 80 + "vh";
+  let noCount = 0;
+
+  const messages = [
+    "Hawww chotuu 😒",
+    "Zyada nhi ho rha ab teraa 😤",
+    "Jutta marungii maanja 😡",
+    "Tch tchh pyaar hi nhi krta 😠",
+    "Click on the fucking yes wala button or else ill cuttt ur dick off ✂️ 😑"
+  ];
+
+  function noClicked() {
+    noCount++;
+
+    document.getElementById("msg").innerText =
+      messages[Math.min(noCount - 1, messages.length - 1)];
+
+    const yesBtn = document.getElementById("yes");
+    let currentSize = window.getComputedStyle(yesBtn).fontSize;
+    yesBtn.style.fontSize = (parseFloat(currentSize) + 4) + "px";
+
+    if (noCount >= 5) {
+      document.getElementById("no").style.display = "none";
+    }
   }
-  function yesClick() {
-    document.body.innerHTML =
-      "<h1 style='color:#ff4d88'>AWWWW I LOVE YOUUU SO MUCH 💘💘</h1>";
+
+  function yesClicked() {
+    document.body.innerHTML = `
+      <div style="
+        height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#ffb6d5,#ffe6f0);
+        font-family:Poppins;
+        text-align:center;
+        padding:30px;
+      ">
+        <h1 style="color:#ff2f77;">YAYYYYY 😭💖</h1>
+        <p style="font-size:18px; max-width:400px;">
+          Chotu I love you BHOOT zyaadaaa 🥹💗<br><br>
+          You are my FAVVVVV person mbbb ur my FAV BACHAAAA😌<br>
+          Thank you for being my Valentine MWAAHHH 💋💋💕
+        </p>
+        <div style="font-size:30px;">💞🧸🌸🍓💘</div>
+      </div>
+    `;
   }
 </script>
 
